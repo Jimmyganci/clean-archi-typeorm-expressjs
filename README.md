@@ -73,4 +73,4 @@ API backend bionbe search
 &nbsp;
 &nbsp;
 
-##### Made with ❤ by Jean Carlos Reyes
+##### Made with ❤ by Jimmy Ganci
