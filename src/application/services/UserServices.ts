@@ -1,3 +1,4 @@
+import { Token } from "@entities/Token";
 import { User } from "@entities/User";
 import { IUserRepository } from "@interfaces/repositories/IUserRepository";
 import { IUserServices } from "@interfaces/services/IUserServices";
@@ -30,4 +31,5 @@ export class UserServices
     const response = await this.repository.GetByManagerPhone(companyPhone, id)
     return response;
   }
+  
 }

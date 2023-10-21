@@ -8,8 +8,8 @@ export class UserMiddlewares {
    userExists = async (req: Request, res: Response, next: NextFunction) => {
             const { id } = req.params;
             const response = await this._userServices.GetById((id));
-            if (!response) new CustomError('User not found', 404)
-            next()
+            if (!response) res.status(404).send('User not found')
+            else next()
     }
 
     fieldExists = async (req: Request, res: Response, next: NextFunction) => {
