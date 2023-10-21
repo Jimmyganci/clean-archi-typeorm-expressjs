@@ -1,7 +1,8 @@
-import { EntityTarget, FindOptionsWhere, Not } from "typeorm";
+import { FindOptionsWhere, Not } from "typeorm";
 import { User } from "@entities/User";
 import { GenericRepository } from "@repositories/GenericRepository";
 import { IUserRepository } from "@interfaces/repositories/IUserRepository";
+import { Token } from "@entities/Token";
 
 export class UserRepository
   extends GenericRepository<User>
@@ -37,4 +38,6 @@ export class UserRepository
     const user = await this.repository.findOne(criterias);
     return user;
   }
+
+  
 }

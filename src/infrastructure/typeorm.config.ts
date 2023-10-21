@@ -2,6 +2,7 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { User } from "@entities/User";
 import { DB_CONFIG } from "@helpers/databaseConfiguration";
+import { Token } from "@entities/Token";
 
 export const AppDataSource = new DataSource({
   type: DB_CONFIG.type,
@@ -12,7 +13,7 @@ export const AppDataSource = new DataSource({
   database: DB_CONFIG.database,
   synchronize: true,
   logging: false,
-  entities: [User],
+  entities: [User, Token],
   migrations: [],
   subscribers: [],
 });

@@ -1,4 +1,6 @@
+import { Token } from "@entities/Token";
 import { IsEmail, IsNotEmpty, IsOptional, IsPhoneNumber, IsString, IsStrongPassword } from "class-validator";
+import { OneToMany } from "typeorm";
 
 export class CreateUserDTO {
   constructor(props: CreateUserDTO) {
@@ -39,4 +41,7 @@ export class CreateUserDTO {
   @IsString()
   @IsOptional()
   role: string;
+
+  @OneToMany(type => Token, token => token.user_id)
+  tokens: Token[];
 }
