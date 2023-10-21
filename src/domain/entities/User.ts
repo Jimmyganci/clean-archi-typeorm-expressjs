@@ -1,5 +1,6 @@
-import { Column, Entity, Unique } from "typeorm";
+import { Column, Entity, OneToMany } from "typeorm";
 import { BaseEntity } from "@entities/BaseEntity";
+import { Token } from "./Token";
 
 @Entity()
 export class User extends BaseEntity {
@@ -31,4 +32,8 @@ export class User extends BaseEntity {
 
   @Column({default: 'user'})
   role?: string;
+
+  @OneToMany(type => Token, token => token.user_id)
+  tokens: Token[];
+
 }
