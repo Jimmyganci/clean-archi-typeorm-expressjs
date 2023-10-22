@@ -18,7 +18,18 @@ const userController = new UserController(userServices, tokenServices);
 const userMiddlewares = new UserMiddlewares(userServices)
 
 // users
+
+/**
+ * @openapi
+ * /users:
+ *   get:
+ *     description: Get all users
+ *     responses:
+ *       200:
+ *         description: Returns all users
+ */
 userRoute.get("/", userController.getAll);
+
 userRoute.get("/:id", userController.getById);
 userRoute.post("/",userMiddlewares.fieldExists, userController.create);
 userRoute.put("/:id", [userMiddlewares.userExists, userMiddlewares.fieldExists], userController.update);
