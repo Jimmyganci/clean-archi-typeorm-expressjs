@@ -4,7 +4,7 @@ export const swaggerOptions: Options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Hello World',
+      title: 'API BIONBE SEARCH',
       version: '1.0.0',
     },
   },
