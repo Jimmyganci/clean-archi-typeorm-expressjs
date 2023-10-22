@@ -42,6 +42,6 @@ export class CreateUserDTO {
   @IsOptional()
   role: string;
 
-  @OneToMany(type => Token, token => token.user_id)
+  @OneToMany(type => Token, token => token.userIdId)
   tokens: Token[];
 }

@@ -16,7 +16,7 @@ export class TokenRepository
   async GetAllByUser(user_id: string): Promise<Token[]> {
     const tokens = await this.repository.find({
       where: {
-        user_id: Equal(user_id)
+        userIdId: Equal(user_id)
       }
     });
     return tokens
