@@ -1,23 +1,22 @@
 import { NextFunction, Request, Response } from "express";
-import { IUserServices } from "@interfaces/services/IUserServices";
 import { NotFoundError } from "@error-custom//NotFoundError";
-import { ITokenServices } from "@interfaces/services/ITokenServices";
+import { IElasticsearchServices } from "@interfaces/services/IElasticsearch";
 
 export class ElasticsearchController {
-  constructor() {}
+  constructor(private _elasticsearchServices: IElasticsearchServices) {}
 
   getAllEvents = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const filter = req.body;
-      console.log(filter);
       
-      const response = []
+      const response = await this._elasticsearchServices.GetAllEvents(filter)
 
-      if (response.length === 0) {
+
+      if (!response) {
         throw new NotFoundError("No data found");
       }
 
-      return res.status(200).json({});
+      return res.status(200).json(response);
     } catch (error) {
       return next(error);
     }
@@ -27,13 +26,13 @@ export class ElasticsearchController {
       const filter = req.body;
       console.log(filter);
       
-      const response = []
+      const response = await this._elasticsearchServices.GetAllActivities(filter)
 
-      if (response.length === 0) {
+      if (!response) {
         throw new NotFoundError("No data found");
       }
 
-      return res.status(200).json({});
+      return res.status(200).json(response);
     } catch (error) {
       return next(error);
     }
@@ -43,13 +42,13 @@ export class ElasticsearchController {
       const filter = req.body;
       console.log(filter);
       
-      const response = []
+      const response = await this._elasticsearchServices.GetAllPages(filter)
 
-      if (response.length === 0) {
+      if (!response) {
         throw new NotFoundError("No data found");
       }
 
-      return res.status(200).json({});
+      return res.status(200).json(response);
     } catch (error) {
       return next(error);
     }
@@ -57,15 +56,14 @@ export class ElasticsearchController {
   getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const filter = req.body;
-      console.log(filter);
       
-      const response = []
+      const response = await this._elasticsearchServices.GetAllUsers(filter)
 
-      if (response.length === 0) {
+      if (!response) {
         throw new NotFoundError("No data found");
       }
 
-      return res.status(200).json({});
+      return res.status(200).json(response);
     } catch (error) {
       return next(error);
     }

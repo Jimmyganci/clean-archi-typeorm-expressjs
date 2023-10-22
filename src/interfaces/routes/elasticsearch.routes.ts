@@ -1,14 +1,22 @@
 import { Router } from "express";
 import { ElasticsearchController } from "@controllers/elasticsearch.controller";
+import { ElasticsearchLibrary } from "infrastructure/librairies/ElasticsearchLibrary";
+import elasticClient from "config/elasticsearch.config";
+import { ElasticsearchServices } from "@services/ElasticsearchServices";
 
 const elasticsearchRoute = Router();
-const elasticsearchController = new ElasticsearchController()
+
+const elasticsearchLibrairy = new ElasticsearchLibrary(elasticClient);
+
+const elasticsearchServices = new ElasticsearchServices(elasticsearchLibrairy);
+
+const elasticsearchController = new ElasticsearchController(elasticsearchServices);
 
 // users
-elasticsearchRoute.get("/events", elasticsearchController.getAllEvents);
-elasticsearchRoute.get("/activities", elasticsearchController.getAllActivities);
-elasticsearchRoute.get("/pages", elasticsearchController.getAllPages);
-elasticsearchRoute.get("/users", elasticsearchController.getAllUsers);
+elasticsearchRoute.post("/events", elasticsearchController.getAllEvents);
+elasticsearchRoute.post("/activities", elasticsearchController.getAllActivities);
+elasticsearchRoute.post("/pages", elasticsearchController.getAllPages);
+elasticsearchRoute.post("/users", elasticsearchController.getAllUsers);
 
 
 export { elasticsearchRoute };
