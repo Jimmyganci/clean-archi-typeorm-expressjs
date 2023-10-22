@@ -100,6 +100,8 @@ export class UserController {
           })
         );
       }
+      console.log(req.body);
+      
       const response = await this._tokenServices.Create(new Token(req.body))
       return res.status(201).json(response);
 
@@ -152,6 +154,17 @@ export class UserController {
       const response = await this._userServices.Delete(id);
 
       return res.status(200).json({});
+    } catch (error) {
+      return next(error);
+    }
+  }
+
+  deleteToken = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id, token_id } = req.params;
+      const response = await this._tokenServices.Delete(token_id);
+
+      return res.status(204).json({});
     } catch (error) {
       return next(error);
     }
