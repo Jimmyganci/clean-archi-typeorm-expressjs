@@ -12,10 +12,6 @@ export class Token extends BaseEntity {
   @Column({unique: true})
   website: string;
 
-  @Column({unique: true})
-  @Generated('uuid')
-  keyapi: string;
-
   @ManyToOne(type => User, user => user.tokens)
-  user_id: User;
+  userIdId: User;
 }

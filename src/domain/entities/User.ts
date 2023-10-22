@@ -33,7 +33,7 @@ export class User extends BaseEntity {
   @Column({default: 'user'})
   role?: string;
 
-  @OneToMany(type => Token, token => token.user_id)
+  @OneToMany(type => Token, token => token.userIdId)
   tokens: Token[];
 
 }

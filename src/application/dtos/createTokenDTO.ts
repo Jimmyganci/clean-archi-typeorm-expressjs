@@ -11,9 +11,6 @@ export class CreateTokenDTO {
   @IsUrl()
   website: string;
 
-  @Generated('uuid')
-  token: string
-
   @ManyToOne(type => User, user => user.tokens)
-  user_id: User;
+  userIdId: User;
 }
